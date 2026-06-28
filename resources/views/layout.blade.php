@@ -65,6 +65,9 @@
 
                     @endif
                 </ul>
+                <li class="nav-item">
+                    <a class="nav-link" href="/books">IDs</a>
+                </li>
             </div>
         </div>
     </nav>

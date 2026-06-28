@@ -1,15 +1,14 @@
 <?php
 
-namespace App\Models;
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
 
-use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
-
-class IDs extends Model
+return new class extends Migration
 {
     public function up(): void
     {
-        Schema::create('ids', function (Blueprint $table) {
+        Schema::create('i_ds', function (Blueprint $table) {
             $table->id();
             $table->foreignId('sinner_id');
             $table->string('name', 256);
@@ -22,9 +21,8 @@ class IDs extends Model
         });
     }
 
-    public function sinners(): BelongsTo
+    public function down(): void
     {
-        return $this->BelongsTo(sinners::class);
+        Schema::dropIfExists('i_ds');
     }
-
-}
+};
