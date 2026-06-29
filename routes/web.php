@@ -6,6 +6,7 @@ use App\Http\Controllers\SinnersController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\IDsController;
 use App\Http\Controllers\AssociationController;
+use App\Http\Controllers\DataController;
 
 Route::get('/', [HomeController::class, 'index']);
 
@@ -37,3 +38,8 @@ Route::post('/associations/put', [AssociationController::class, 'put']);
 Route::get('/associations/update/{association}', [AssociationController::class, 'update']);
 Route::post('/associations/patch/{association}', [AssociationController::class, 'patch']);
 Route::post('/associations/delete/{association}', [AssociationController::class, 'delete']);
+
+// Data/API
+Route::get('/data/get-top-ids', [DataController::class, 'getTopIDs']);
+Route::get('/data/get-id/{ids}', [DataController::class, 'getID']);
+Route::get('/data/get-related-ids/{ids}', [DataController::class, 'getRelatedIDs']);

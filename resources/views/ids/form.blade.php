@@ -10,6 +10,7 @@
         </div>
     @endif
 
+
     <form
         method="post"
         action="{{ $ids->exists ? '/ids/patch/' . $ids->id : '/ids/put' }}"
@@ -62,14 +63,14 @@
 
         <div class="mb-3">
             <label for="id-association" class="form-label">Association</label>
-        
+
             <select
                 id="id-association"
                 name="association_id"
                 class="form-select @error('association_id') is-invalid @enderror"
             >
                 <option value="">Select an association</option>
-        
+
                 @foreach ($associations as $association)
                     <option
                         value="{{ $association->id }}"
@@ -81,7 +82,7 @@
                     </option>
                 @endforeach
             </select>
-        
+
             @error('association_id')
                 <p class="invalid-feedback">{{ $errors->first('association_id') }}</p>
             @enderror
@@ -102,42 +103,69 @@
         </div>
 
         <div class="mb-3">
-            <label for="id-year" class="form-label">Year</label>
+            <label for="id-rarity" class="form-label">Rarity</label>
+
+            <select
+                id="id-rarity"
+                name="rarity"
+                class="form-select @error('rarity') is-invalid @enderror"
+            >
+                <option value="">Select rarity</option>
+
+                <option
+                    value="00"
+                    @if (old('rarity', $ids->rarity) == '00') selected @endif
+                >
+                    00
+                </option>
+
+                <option
+                    value="000"
+                    @if (old('rarity', $ids->rarity) == '000') selected @endif
+                >
+                    000
+                </option>
+            </select>
+
+            @error('rarity')
+                <p class="invalid-feedback">{{ $errors->first('rarity') }}</p>
+            @enderror
+        </div>
+
+        <div class="mb-3">
+            <label for="id-season" class="form-label">Season</label>
+
+            <input
+                type="text"
+                id="id-season"
+                name="season"
+                value="{{ old('season', $ids->season) }}"
+                class="form-control @error('season') is-invalid @enderror"
+            >
+
+            @error('season')
+                <p class="invalid-feedback">{{ $errors->first('season') }}</p>
+            @enderror
+        </div>
+
+        <div class="mb-3">
+            <label for="id-release-year" class="form-label">Release year</label>
 
             <input
                 type="number"
                 max="{{ date('Y') + 1 }}"
                 step="1"
-                id="id-year"
-                name="year"
-                value="{{ old('year', $ids->year) }}"
-                class="form-control @error('year') is-invalid @enderror"
+                id="id-release-year"
+                name="release_year"
+                value="{{ old('release_year', $ids->release_year) }}"
+                class="form-control @error('release_year') is-invalid @enderror"
             >
 
-            @error('year')
-                <p class="invalid-feedback">{{ $errors->first('year') }}</p>
+            @error('release_year')
+                <p class="invalid-feedback">{{ $errors->first('release_year') }}</p>
             @enderror
         </div>
-
-        <div class="mb-3">
-            <label for="id-price" class="form-label">Price</label>
-
-            <input
-                type="number"
-                min="0.00"
-                step="0.01"
-                lang="en"
-                id="id-price"
-                name="price"
-                value="{{ old('price', $ids->price) }}"
-                class="form-control @error('price') is-invalid @enderror"
-            >
-
-            @error('price')
-                <p class="invalid-feedback">{{ $errors->first('price') }}</p>
-            @enderror
-        </div>
-
+    
         <div class="mb-3">
             <label for="id-image" class="form-label">Image</label>
 

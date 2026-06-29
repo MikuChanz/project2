@@ -13,8 +13,9 @@
                     <th>Name</th>
                     <th>Sinner</th>
                     <th>Association</th>
-                    <th>Year</th>
-                    <th>Price</th>
+                    <th>Rarity</th>
+                    <th>Season</th>
+                    <th>Release year</th>
                     <th>Display</th>
                     <th>&nbsp;</th>
                 </tr>
@@ -27,11 +28,9 @@
                         <td>{{ $ids->name }}</td>
                         <td>{{ $ids->sinner->name }}</td>
                         <td>{{ $ids->association->name }}</td>
-                        <td>{{ $ids->year }}</td>
-
-                        <td>
-                            &euro; {{ number_format($ids->price, 2, '.', '') }}
-                        </td>
+                        <td>{{ $ids->rarity }}</td>
+                        <td>{{ $ids->season }}</td>
+                        <td>{{ $ids->release_year }}</td>
 
                         <td>
                             {!! $ids->display ? '&#x2714;' : '&#x274C;' !!}

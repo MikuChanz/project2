@@ -18,9 +18,10 @@ class IDsRequest extends FormRequest
             'sinner_id' => 'required',
             'association_id' => 'required',
             'description' => 'nullable',
-            'price' => 'nullable|numeric',
-            'year' => 'numeric',
-            'image' => 'nullable|image',
+            'rarity' => 'required',
+            'season' => 'nullable|string|max:64',
+            'release_year' => 'numeric',
+            'image' => 'nullable|file|mimes:png,jpg,jpeg,webp',
             'display' => 'nullable',
         ];
     }
@@ -28,14 +29,15 @@ class IDsRequest extends FormRequest
     public function attributes(): array
     {
         return [
-            'name' => 'name',
-            'sinner_id' => 'Sinners',
+            'name' => 'identity name',
+            'sinner_id' => 'sinner',
             'association_id' => 'association',
             'description' => 'description',
-            'price' => 'price',
-            'year' => 'year',
+            'rarity' => 'rarity',
+            'season' => 'season',
+            'release_year' => 'release year',
             'image' => 'image',
-            'display' => 'display',
+            'display' => 'publish',
         ];
     }
 

@@ -14,8 +14,9 @@ class IDs extends Model
         'sinner_id',
         'association_id',
         'description',
-        'price',
-        'year',
+        'rarity',
+        'season',
+        'release_year',
         'image',
         'display',
     ];
@@ -28,5 +29,20 @@ class IDs extends Model
     public function association(): BelongsTo
     {
         return $this->belongsTo(Association::class);
+    }
+
+    public function jsonSerialize(): mixed
+    {
+        return [
+            'id' => intval($this->id),
+            'name' => $this->name,
+            'description' => $this->description,
+            'sinner' => $this->sinner->name,
+            'association' => $this->association->name,
+            'rarity' => $this->rarity,
+            'season' => $this->season,
+            'release_year' => intval($this->release_year),
+            'image' => asset('images/' . $this->image),
+        ];
     }
 }

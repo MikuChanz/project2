@@ -9,6 +9,7 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controllers\HasMiddleware;
 use App\Http\Requests\IDsRequest;
+use App\Models\Association;
 
 class IDsController extends Controller implements HasMiddleware
 {
@@ -50,7 +51,7 @@ class IDsController extends Controller implements HasMiddleware
     {
         $sinners = Sinners::orderBy('name', 'asc')->get();
         $associations = Association::orderBy('name', 'asc')->get();
-    
+
         return view('ids.form', [
             'title' => 'Edit ID',
             'ids' => $ids,
