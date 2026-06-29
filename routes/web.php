@@ -5,6 +5,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\SinnersController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\IDsController;
+use App\Http\Controllers\AssociationController;
 
 Route::get('/', [HomeController::class, 'index']);
 
@@ -27,3 +28,12 @@ Route::post('/ids/put', [IDsController::class, 'put']);
 Route::get('/ids/update/{ids}', [IDsController::class, 'update']);
 Route::post('/ids/patch/{ids}', [IDsController::class, 'patch']);
 Route::post('/ids/delete/{ids}', [IDsController::class, 'delete']);
+
+// Association routes
+
+Route::get('/associations', [AssociationController::class, 'list']);
+Route::get('/associations/create', [AssociationController::class, 'create']);
+Route::post('/associations/put', [AssociationController::class, 'put']);
+Route::get('/associations/update/{association}', [AssociationController::class, 'update']);
+Route::post('/associations/patch/{association}', [AssociationController::class, 'patch']);
+Route::post('/associations/delete/{association}', [AssociationController::class, 'delete']);

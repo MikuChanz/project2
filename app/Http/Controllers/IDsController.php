@@ -35,11 +35,13 @@ class IDsController extends Controller implements HasMiddleware
     public function create(): View
     {
         $sinners = Sinners::orderBy('name', 'asc')->get();
+        $associations = Association::orderBy('name', 'asc')->get();
 
-        return view('ids.form', [
-            'title' => 'Add ID',
-            'ids' => new IDs(),
-            'sinners' => $sinners,
+        return view('ids.form', [   
+        'title' => 'Add ID',
+        'ids' => new IDs(),
+        'sinners' => $sinners,
+        'associations' => $associations,
         ]);
     }
 
@@ -47,11 +49,13 @@ class IDsController extends Controller implements HasMiddleware
     public function update(IDs $ids): View
     {
         $sinners = Sinners::orderBy('name', 'asc')->get();
-
+        $associations = Association::orderBy('name', 'asc')->get();
+    
         return view('ids.form', [
             'title' => 'Edit ID',
             'ids' => $ids,
             'sinners' => $sinners,
+            'associations' => $associations,
         ]);
     }
 

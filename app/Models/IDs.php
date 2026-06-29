@@ -7,24 +7,26 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class IDs extends Model
 {
-    public function up(): void
+    protected $table = 'i_ds';
+
+    protected $fillable = [
+        'name',
+        'sinner_id',
+        'association_id',
+        'description',
+        'price',
+        'year',
+        'image',
+        'display',
+    ];
+
+    public function sinner(): BelongsTo
     {
-        Schema::create('ids', function (Blueprint $table) {
-            $table->id();
-            $table->foreignId('sinner_id');
-            $table->string('name', 256);
-            $table->text('description')->nullable();
-            $table->decimal('price', 8, 2)->nullable();
-            $table->integer('year');
-            $table->string('image', 256)->nullable();
-            $table->boolean('display');
-            $table->timestamps();
-        });
+        return $this->belongsTo(Sinners::class);
     }
 
-    public function sinners(): BelongsTo
+    public function association(): BelongsTo
     {
-        return $this->BelongsTo(sinners::class);
+        return $this->belongsTo(Association::class);
     }
-
 }

@@ -12,6 +12,7 @@
                     <th>ID</th>
                     <th>Name</th>
                     <th>Sinner</th>
+                    <th>Association</th>
                     <th>Year</th>
                     <th>Price</th>
                     <th>Display</th>
@@ -25,6 +26,7 @@
                         <td>{{ $ids->id }}</td>
                         <td>{{ $ids->name }}</td>
                         <td>{{ $ids->sinner->name }}</td>
+                        <td>{{ $ids->association->name }}</td>
                         <td>{{ $ids->year }}</td>
 
                         <td>

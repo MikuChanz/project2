@@ -16,6 +16,7 @@ class IDsRequest extends FormRequest
         return [
             'name' => 'required|min:3|max:256',
             'sinner_id' => 'required',
+            'association_id' => 'required',
             'description' => 'nullable',
             'price' => 'nullable|numeric',
             'year' => 'numeric',
@@ -27,26 +28,27 @@ class IDsRequest extends FormRequest
     public function attributes(): array
     {
         return [
-            'name' => 'nosaukums',
-            'sinner_id' => 'grēcinieks',
-            'description' => 'apraksts',
-            'price' => 'cena',
-            'year' => 'gads',
-            'image' => 'attēls',
-            'display' => 'publicēt',
+            'name' => 'name',
+            'sinner_id' => 'Sinners',
+            'association_id' => 'association',
+            'description' => 'description',
+            'price' => 'price',
+            'year' => 'year',
+            'image' => 'image',
+            'display' => 'display',
         ];
     }
 
     public function messages(): array
     {
         return [
-            'required' => 'Lauks ":attribute" ir obligāts',
-            'min' => 'Laukam ":attribute" jābūt vismaz :min simbolus garam',
-            'max' => 'Lauks ":attribute" nedrīkst būt garāks par :max simboliem',
-            'boolean' => 'Lauka ":attribute" vērtībai jābūt "true" vai "false"',
-            'unique' => 'Šāda lauka ":attribute" vērtība jau ir reģistrēta',
-            'numeric' => 'Lauka ":attribute" vērtībai jābūt skaitlim',
-            'image' => 'Laukā ":attribute" jāpievieno korekts attēla fails',
+            'required' => 'field ":attribute" is mandatory',
+            'min' => 'field ":attribute" has to be at least :min symbols long',
+            'max' => 'field ":attribute" cannot be longer than :max symbols',
+            'boolean' => 'field ":attribute" value must be "true" or "false"',
+            'unique' => 'field ":attribute" value is already registered',
+            'numeric' => 'field ":attribute" value must be a number',
+            'image' => 'field ":attribute" add a correct image file',
         ];
     }
 }

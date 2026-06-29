@@ -61,6 +61,33 @@
         </div>
 
         <div class="mb-3">
+            <label for="id-association" class="form-label">Association</label>
+        
+            <select
+                id="id-association"
+                name="association_id"
+                class="form-select @error('association_id') is-invalid @enderror"
+            >
+                <option value="">Select an association</option>
+        
+                @foreach ($associations as $association)
+                    <option
+                        value="{{ $association->id }}"
+                        @if ($association->id == old('association_id', $ids->association_id ?? false))
+                            selected
+                        @endif
+                    >
+                        {{ $association->name }}
+                    </option>
+                @endforeach
+            </select>
+        
+            @error('association_id')
+                <p class="invalid-feedback">{{ $errors->first('association_id') }}</p>
+            @enderror
+        </div>
+
+        <div class="mb-3">
             <label for="id-description" class="form-label">Description</label>
 
             <textarea
