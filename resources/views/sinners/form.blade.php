@@ -10,7 +10,10 @@
         </div>
     @endif
 
-    <form method="post" action="{{ $sinners->exists ? '/sinners/patch/' . $author ->id : '/authors/put' }}">
+    <form
+        method="post"
+        action="{{ $sinners->exists ? '/sinners/patch/' . $sinners->id : '/sinners/put' }}"
+    >
         @csrf
 
         <div class="mb-3">
@@ -23,7 +26,7 @@
                 class="form-control @error('name') is-invalid @enderror"
                 id="sinner-name"
                 name="name"
-                value="{{ old('name', $sinner->name) }}"
+                value="{{ old('name', $sinners->name) }}"
             >
 
             @error('name')

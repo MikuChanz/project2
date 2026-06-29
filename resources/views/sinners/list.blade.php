@@ -22,7 +22,7 @@
                         <td>{{ $sinners->name }}</td>
                         <td> <a href="/sinners/update/{{ $sinners->id }}" class="btn btn-outline-primary btn-sm"> Edit </a> 
                             <form
-                                action="/sinners/delete/{{ $sinner->id }}" method="post" class="deletion-form d-inline">
+                                action="/sinners/delete/{{ $sinners->id }}" method="post" class="deletion-form d-inline">
                                 @csrf
                                 <button type="submit" class="btn btn-outline-danger btn-sm"> Delete </button>
                             </form>
